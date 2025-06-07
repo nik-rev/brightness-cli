@@ -1,0 +1,12 @@
+[package]
+name = "luminaclity"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+brightness = {version="0.5.0", default-features = false }
+clap = { version = "4.5.39", features = [
+  "derive",
+  "wrap_help",
+  "unstable-markdown",
+] }
