@@ -21,15 +21,19 @@ const STYLES: clap::builder::Styles = clap::builder::Styles::styled()
 #[derive(Parser)]
 #[command(version, styles = STYLES, long_about = None)]
 pub struct Cli {
-    /// Output JSON
-    #[arg(long, global = true)]
-    pub json: bool,
+    /// The command to invoke
     #[command(subcommand)]
     pub command: Command,
 }
 
 #[derive(Subcommand)]
 pub enum Command {
+    /// Generate completions for a shell
+    Completion {
+        /// Shell to generation completions for
+        #[arg(value_enum)]
+        shell: clap_complete_command::Shell,
+    },
     /// Set brightness of a device
     Set {
         /// Modify the percentage of brightness
@@ -47,6 +51,9 @@ pub enum Command {
         /// Silence output
         #[arg(short, long)]
         silent: bool,
+        /// Output JSON
+        #[arg(long)]
+        json: bool,
     },
     /// Get brightness of a device
     Get {
@@ -56,7 +63,14 @@ pub enum Command {
         /// Silence output
         #[arg(short, long)]
         silent: bool,
+        /// Output JSON
+        #[arg(long)]
+        json: bool,
     },
     /// List each device and its brightness
-    List,
+    List {
+        /// Output JSON
+        #[arg(long)]
+        json: bool,
+    },
 }

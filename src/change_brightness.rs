@@ -1,4 +1,4 @@
-//! Take an action with the brightness
+//! Modify a device's brightness
 
 use std::str::FromStr;
 
@@ -7,15 +7,22 @@ use brightness::blocking::{Brightness as _, BrightnessDevice};
 /// What to do with the brightness
 #[derive(Clone, Copy, Eq, PartialEq, PartialOrd, Ord, Debug)]
 pub enum ChangeBrightness {
+    /// Increase brightness by an absolute percentage
+    ///
     /// e.g.: `+10%`
     Increase(u32),
+    /// Decrease brightness by an absolute percentage
+    ///
     /// e.g.: `-10%`
     Decrease(u32),
+    /// Set the brightness to a specific percentage
+    ///
     /// e.g.: `50%`
     Set(u32),
 }
 
 impl ChangeBrightness {
+    /// Change brightness of the given device
     pub fn change_brightness_of_device(
         self,
         device: &BrightnessDevice,

@@ -4,7 +4,7 @@ mod cli;
 use std::fmt::{Display, Write as _};
 
 use ::brightness::blocking::{self as brightness, Brightness};
-use clap::Parser as _;
+use clap::{CommandFactory, Parser as _};
 use cli::{Cli, Command};
 use colored::Colorize;
 
@@ -62,10 +62,14 @@ fn err_prefix() -> String {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
     match cli.command {
+        Command::Completion { shell } => {
+            shell.generate(&mut Cli::command(), &mut std::io::stdout());
+        }
         Command::Set {
             action,
             device,
             silent,
+            json,
         } => {
             let device = device
                 .map_or_else(
@@ -86,13 +90,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let info = DeviceInfo {
                     name: device.device_name()?,
                     brightness: device.get()?,
-                    is_json: cli.json,
+                    is_json: json,
                 };
 
                 println!("{info}");
             }
         }
-        Command::Get { device, silent } => {
+        Command::Get {
+            device,
+            silent,
+            json,
+        } => {
             let dev = device
                 .map_or_else(
                     || brightness::brightness_devices().flatten().next(),
@@ -114,14 +122,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 let info = DeviceInfo {
                     name: dev.device_name()?,
                     brightness,
-                    is_json: cli.json,
+                    is_json: json,
                 };
 
                 println!("{info}");
             }
         }
-        Command::List => {
-            let mut output = if cli.json {
+        Command::List { json } => {
+            let mut output = if json {
                 format!(
                     "{}\n  {}{} {}\n",
                     "{".bright_black(),
@@ -153,17 +161,17 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         let device = DeviceInfo {
                             name,
                             brightness,
-                            is_json: cli.json,
+                            is_json: json,
                         };
 
-                        if cli.json {
+                        if json {
                             writeln!(&mut output, "    {}{}", device, ",".bright_black())?;
                         } else {
                             writeln!(&mut output, "{}", device)?;
                         };
                     }
                     Err(err) => {
-                        if cli.json {
+                        if json {
                             eprintln!("{err}")
                         } else {
                             eprintln!("{} {err}", err_prefix())
@@ -172,7 +180,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 }
             }
 
-            let output = if cli.json {
+            let output = if json {
                 let mut output = output
                     .strip_suffix(",")
                     .map(|s| s.to_string())

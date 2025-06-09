@@ -2,12 +2,30 @@
 name = "lumina"
 version = "0.1.0"
 edition = "2024"
+homepage = "https://github.com/nik-rev/lumina"
+repository = "https://github.com/nik-rev/lumina"
+license = "MIT OR Apache-2.0"
+categories = ["brightness", "command-line-tools", "cli"]
+authors = ["Nik Revenco"]
+
+[package.metadata.wix]
+upgrade-guid = "D3E897F5-DA4F-4B15-9EBB-D3FFBE0836BC"
+path-guid = "89A3272B-882D-4AF8-8EAA-8E5A9AB469D0"
+license = false
+eula = false
 
 [dependencies]
-brightness = {version="0.5.0", default-features = false }
+brightness = { version="0.5.0", default-features = false }
 clap = { version = "4.5.39", features = [
   "derive",
   "wrap_help",
   "unstable-markdown",
 ] }
+clap_complete_command = { version="0.6.1", features = ["carapace", "fig"] }
 colored = "3.0.0"
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+codegen-units = 1
+lto = true
