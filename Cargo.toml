@@ -15,18 +15,13 @@ license = false
 eula = false
 
 [dependencies]
-brightness = {
-  version = "0.5.0", default-features = false
-}
+brightness = { version = "0.5.0", default-features = false }
 clap = { version = "4.5.39", features = [
   "derive",
   "wrap_help",
   "unstable-markdown",
 ] }
-clap_complete_command = {
-  version="0.6.1",
-  features = ["carapace", "fig"]
-}
+clap_complete_command = { version = "0.6.1", features = ["carapace", "fig"] }
 colored = "3.0.0"
 
 # The profile that 'dist' will build with
