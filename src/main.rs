@@ -65,6 +65,9 @@ fn err_prefix() -> String {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
     match cli.command {
+        Command::MarkdownHelp => {
+            clap_markdown::print_help_markdown::<Cli>();
+        }
         Command::Completion { shell } => {
             shell.generate(&mut Cli::command(), &mut std::io::stdout());
         }

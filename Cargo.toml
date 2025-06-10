@@ -21,6 +21,7 @@ clap = { version = "4.5.39", features = [
   "wrap_help",
   "unstable-markdown",
 ] }
+clap-markdown = "0.1.5"
 clap_complete_command = { version = "0.6.1", features = ["carapace", "fig"] }
 colored = "3.0.0"
 

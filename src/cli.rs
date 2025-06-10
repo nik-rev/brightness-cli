@@ -28,6 +28,9 @@ pub struct Cli {
 
 #[derive(Subcommand)]
 pub enum Command {
+    /// Generate markdown help
+    #[command(hide = true)]
+    MarkdownHelp,
     /// Generate completions for a shell
     Completion {
         /// Shell to generation completions for
