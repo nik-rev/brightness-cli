@@ -1,4 +1,4 @@
-//! Command-line interface for `lumina`
+//! Command-line interface for `brightness-cli`
 
 use clap::{
     Parser, Subcommand,

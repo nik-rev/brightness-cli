@@ -291,6 +291,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "brightness-cli"
+version = "0.1.0"
+dependencies = [
+ "brightness",
+ "clap",
+ "clap-markdown",
+ "clap_complete_command",
+ "colored",
+]
+
+[[package]]
 name = "byteorder"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -787,17 +798,6 @@ name = "log"
 version = "0.4.27"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13dc2df351e3202783a1fe0d44375f7295ffb4049267b0f3018346dc122a1d94"
-
-[[package]]
-name = "lumina-bin"
-version = "0.1.0"
-dependencies = [
- "brightness",
- "clap",
- "clap-markdown",
- "clap_complete_command",
- "colored",
-]
 
 [[package]]
 name = "memchr"

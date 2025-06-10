@@ -1,4 +1,4 @@
-# lumina
+# brightness-cli
 
 A program to read and control device brightness.
 
@@ -6,23 +6,23 @@ Supported:
 - Windows
 - Linux
 
-# Command-Line Help for `lumina`
+# Command-Line Help for `brightness-cli`
 
-This document contains the help content for the `lumina` command-line program.
+This document contains the help content for the `brightness-cli` command-line program.
 
 **Command Overview:**
 
-* [`lumina`↴](#lumina)
-* [`lumina completion`↴](#lumina-completion)
-* [`lumina set`↴](#lumina-set)
-* [`lumina get`↴](#lumina-get)
-* [`lumina list`↴](#lumina-list)
+* [`brightness-cli`↴](#brightness-cli)
+* [`brightness-cli completion`↴](#brightness-cli-completion)
+* [`brightness-cli set`↴](#brightness-cli-set)
+* [`brightness-cli get`↴](#brightness-cli-get)
+* [`brightness-cli list`↴](#brightness-cli-list)
 
-## `lumina`
+## `brightness-cli`
 
 Read and control device brightness
 
-**Usage:** `lumina <COMMAND>`
+**Usage:** `brightness-cli <COMMAND>`
 
 ###### **Subcommands:**
 
@@ -33,11 +33,11 @@ Read and control device brightness
 
 
 
-## `lumina completion`
+## `brightness-cli completion`
 
 Generate completions for a shell
 
-**Usage:** `lumina completion <SHELL>`
+**Usage:** `brightness-cli completion <SHELL>`
 
 ###### **Arguments:**
 
@@ -48,11 +48,11 @@ Generate completions for a shell
 
 
 
-## `lumina set`
+## `brightness-cli set`
 
 Set brightness of a device
 
-**Usage:** `lumina set [OPTIONS] [ACTION]`
+**Usage:** `brightness-cli set [OPTIONS] [ACTION]`
 
 ###### **Arguments:**
 
@@ -74,11 +74,11 @@ Set brightness of a device
 
 
 
-## `lumina get`
+## `brightness-cli get`
 
 Get brightness of a device
 
-**Usage:** `lumina get [OPTIONS]`
+**Usage:** `brightness-cli get [OPTIONS]`
 
 ###### **Options:**
 
@@ -88,11 +88,11 @@ Get brightness of a device
 
 
 
-## `lumina list`
+## `brightness-cli list`
 
 List each device and its brightness
 
-**Usage:** `lumina list [OPTIONS]`
+**Usage:** `brightness-cli list [OPTIONS]`
 
 ###### **Options:**
 
@@ -103,25 +103,25 @@ List each device and its brightness
 ### Shell
 
 ```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://github.com/nik-rev/lumina/releases/latest/download/lumina-installer.sh | sh
+curl --proto '=https' --tlsv1.2 -LsSf https://github.com/nik-rev/brightness-cli/releases/latest/download/brightness-cli-installer.sh | sh
 ```
 
 ### Homebrew
 
 ```sh
-brew install nik-rev/tap/lumina
+brew install nik-rev/tap/brightness-cli
 ```
 
 ### PowerShell
 
 ```sh
-powershell -ExecutionPolicy Bypass -c "irm https://github.com/nik-rev/lumina/releases/latest/download/lumina-installer.ps1 | iex"
+powershell -ExecutionPolicy Bypass -c "irm https://github.com/nik-rev/brightness-cli/releases/latest/download/brightness-cli-installer.ps1 | iex"
 ```
 
 ### Cargo
 
 ```sh
-cargo install lumina-bin
+cargo install brightness-cli
 ```
 
 ### Nix

@@ -1,4 +1,4 @@
-//! lumina allows you to control brightness of devices
+//! `brightnses-cli` allows you to control brightness of devices
 
 mod change_brightness;
 mod cli;

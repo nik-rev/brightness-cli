@@ -1,23 +1,15 @@
 [package]
-name = "lumina-bin"
-version = "0.1.0"
+name = "brightness-cli"
+version = "0.1.1"
 edition = "2024"
-homepage = "https://github.com/nik-rev/lumina"
-repository = "https://github.com/nik-rev/lumina"
+homepage = "https://github.com/nik-rev/brightness-cli"
+repository = "https://github.com/nik-rev/brightness-cli"
 description = "A program to read and control device brightness"
 license = "MIT OR Apache-2.0"
 categories = ["command-line-utilities", "command-line-interface"]
 authors = ["Nik Revenco <pm@nikrev.com>"]
 
-[[bin]]
-name = "lumina"
-path = "src/main.rs"
-
-[package.metadata.dist]
-formula = "lumina"
-
 [package.metadata.wix]
-name = "lumina"
 upgrade-guid = "D3E897F5-DA4F-4B15-9EBB-D3FFBE0836BC"
 path-guid = "89A3272B-882D-4AF8-8EAA-8E5A9AB469D0"
 license = false
