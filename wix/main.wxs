@@ -69,6 +69,7 @@
 
         <Package Id='*'
             Keywords='Installer'
+            Description='A program to read and control device brightness'
             Manufacturer='Nik Revenco'
             InstallerVersion='450'
             Languages='1033'

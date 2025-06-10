@@ -21,4 +21,6 @@ tap = "nik-rev/homebrew-tap"
 publish-jobs = ["homebrew"]
 
 [dist.github-custom-runners]
-global = "ubuntu-22.04"
+x86_64-unknown-linux-gnu = "ubuntu-24.04"
+aarch64-unknown-linux-gnu = "ubuntu-24.04"
+global = "ubuntu-24.04"
