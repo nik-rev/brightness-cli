@@ -6,7 +6,7 @@ homepage = "https://github.com/nik-rev/lumina"
 repository = "https://github.com/nik-rev/lumina"
 license = "MIT OR Apache-2.0"
 categories = ["brightness", "command-line-tools", "cli"]
-authors = ["Nik Revenco"]
+authors = ["Nik Revenco <pm@nikrev.com>"]
 
 [package.metadata.wix]
 upgrade-guid = "D3E897F5-DA4F-4B15-9EBB-D3FFBE0836BC"
@@ -29,3 +29,61 @@ colored = "3.0.0"
 inherits = "release"
 codegen-units = 1
 lto = true
+
+[lints.rust]
+missing_docs = "warn"
+unused_qualifications = "warn"
+
+[lints.clippy]
+pedantic = { priority = -1, level = "warn" }
+nursery = { priority = -1, level = "warn" }
+
+# --- allowed lints
+# 
+# $a * $b + $c is slower and less precise than $a.mul_add($b, $c)
+# but it is more readable, the gain in speed / precision
+# will be negligible in most situations
+suboptimal_flops = "allow"
+# arbitrary limit imposes unnecessary
+# restriction and can make code harder to follow
+too_many_lines = "allow"
+# if we need it const, make it const.
+# no need to make everything that can be const, const
+missing_const_for_fn = "allow"
+# ---
+
+# --- more consistent ways of writing code
+# 
+# if $a { Some($b) } else { None } => $a.then(|| $b)
+if_then_some_else_none = "warn"
+# use Trait; => use Trait as _;
+unused_trait_names = "warn"
+# foo.rs => foo/mod.rs
+self_named_module_files = "warn"
+# in tests: fn test_foo => fn foo
+redundant_test_prefix = "warn"
+# ---
+
+# --- explain more things
+# 
+# #[allow] => #[allow, reason = "why"]
+allow_attributes_without_reason = "warn"
+# .unwrap() => .expect("why")
+unwrap_used = "warn"
+# assert!(...) => assert!(..., "why")
+missing_assert_message = "warn"
+# documentation for everything
+missing_docs_in_private_items = "warn"
+# ---
+
+# --- catch debug remnants
+#
+dbg_macro = "warn"
+todo = "warn"
+use_debug = "warn"
+# ---
+
+# create_dir(...) => create_dir_all(...)
+# usually, failing when dir already exists is
+# not what we want
+create_dir = "warn"
