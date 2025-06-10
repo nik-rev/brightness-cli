@@ -6,7 +6,7 @@ homepage = "https://github.com/nik-rev/lumina"
 repository = "https://github.com/nik-rev/lumina"
 description = "A program to read and control device brightness"
 license = "MIT OR Apache-2.0"
-categories = ["brightness", "command-line-tools", "cli"]
+categories = ["Command line utilities", "Command line interface"]
 authors = ["Nik Revenco <pm@nikrev.com>"]
 
 [[bin]]
