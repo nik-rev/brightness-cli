@@ -121,7 +121,7 @@ powershell -ExecutionPolicy Bypass -c "irm https://github.com/nik-rev/lumina/rel
 ### Cargo
 
 ```sh
-cargo install lumina
+cargo install lumina-bin
 ```
 
 ### Nix
