@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 homepage = "https://github.com/nik-rev/lumina"
 repository = "https://github.com/nik-rev/lumina"
+description = "A program to read and control device brightness"
 license = "MIT OR Apache-2.0"
 categories = ["brightness", "command-line-tools", "cli"]
 authors = ["Nik Revenco <pm@nikrev.com>"]
