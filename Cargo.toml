@@ -13,7 +13,11 @@ authors = ["Nik Revenco <pm@nikrev.com>"]
 name = "lumina"
 path = "src/main.rs"
 
+[package.metadata.dist]
+formula = "lumina"
+
 [package.metadata.wix]
+name = "lumina"
 upgrade-guid = "D3E897F5-DA4F-4B15-9EBB-D3FFBE0836BC"
 path-guid = "89A3272B-882D-4AF8-8EAA-8E5A9AB469D0"
 license = false
