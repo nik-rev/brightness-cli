@@ -52,16 +52,6 @@ impl Display for DeviceInfo {
     }
 }
 
-/// Colored prefix of an error
-fn err_prefix() -> String {
-    format!(
-        "{}{}{}",
-        "[".bright_black(),
-        "ERROR".bright_red(),
-        "]".bright_black()
-    )
-}
-
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let cli = Cli::parse();
     match cli.command {
@@ -88,7 +78,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             })
                     },
                 )
-                .ok_or_else(|| format!("{} no device found", err_prefix()))?;
+                .ok_or("no device found")?;
 
             action.change_brightness_of_device(&device)?;
 
@@ -120,7 +110,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                             })
                     },
                 )
-                .ok_or_else(|| format!("{} no device found", err_prefix()))?;
+                .ok_or("no device found")?;
 
             if !silent {
                 let brightness = dev.get()?;
@@ -151,17 +141,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 match device {
                     Ok(device) => {
                         let name = device.device_name().map_err(|err| {
-                            format!(
-                                "{} failed to get name of one of the devices: {err}",
-                                err_prefix()
-                            )
+                            format!("failed to get name of one of the devices: {err}",)
                         })?;
 
                         let brightness = device.get().map_err(|err| {
-                            format!(
-                                "{} failed to get brightness of device {name}: {err}",
-                                err_prefix()
-                            )
+                            format!("failed to get brightness of device {name}: {err}",)
                         })?;
 
                         let device = DeviceInfo {
@@ -177,11 +161,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         }
                     }
                     Err(err) => {
-                        if json {
-                            eprintln!("{err}");
-                        } else {
-                            eprintln!("{} {err}", err_prefix());
-                        }
+                        eprintln!("{err}");
                     }
                 }
             }
