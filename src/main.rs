@@ -1,12 +1,14 @@
+//! lumina allows you to control brightness of devices
+
 mod change_brightness;
 mod cli;
 
 use std::fmt::{Display, Write as _};
 
-use ::brightness::blocking::{self as brightness, Brightness};
-use clap::{CommandFactory, Parser as _};
+use ::brightness::blocking::{self as brightness, Brightness as _};
+use clap::{CommandFactory as _, Parser as _};
 use cli::{Cli, Command};
-use colored::Colorize;
+use colored::Colorize as _;
 
 /// Information about a device
 struct DeviceInfo {
@@ -26,13 +28,13 @@ impl Display for DeviceInfo {
         if self.is_json {
             write!(
                 f,
-                r#"{} {}{} {}{} {}{} {} {}"#,
+                r"{} {}{} {}{} {}{} {} {}",
                 "{".bright_black(),
                 r#""name""#.bright_green(),
                 ":".bright_black(),
                 format!(r#""{name}""#).bright_green(),
                 ",".bright_black(),
-                r##""brightness""##.bright_green(),
+                r#""brightness""#.bright_green(),
                 ":".bright_black(),
                 brightness.to_string().bright_yellow(),
                 "}".bright_black()
@@ -50,6 +52,7 @@ impl Display for DeviceInfo {
     }
 }
 
+/// Colored prefix of an error
 fn err_prefix() -> String {
     format!(
         "{}{}{}",
@@ -133,7 +136,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 format!(
                     "{}\n  {}{} {}\n",
                     "{".bright_black(),
-                    r##""devices""##.bright_green(),
+                    r#""devices""#.bright_green(),
                     ":".bright_black(),
                     "[".bright_black()
                 )
@@ -167,14 +170,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                         if json {
                             writeln!(&mut output, "    {}{}", device, ",".bright_black())?;
                         } else {
-                            writeln!(&mut output, "{}", device)?;
-                        };
+                            writeln!(&mut output, "{device}")?;
+                        }
                     }
                     Err(err) => {
                         if json {
-                            eprintln!("{err}")
+                            eprintln!("{err}");
                         } else {
-                            eprintln!("{} {err}", err_prefix())
+                            eprintln!("{} {err}", err_prefix());
                         }
                     }
                 }
@@ -183,7 +186,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let output = if json {
                 let mut output = output
                     .strip_suffix(",")
-                    .map(|s| s.to_string())
+                    .map(ToString::to_string)
                     .unwrap_or(output);
                 write!(&mut output, "{}", "  ]\n}".bright_black())?;
                 output
@@ -193,7 +196,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
             print!("{output}");
         }
-    };
+    }
 
     Ok(())
 }
