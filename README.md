@@ -127,5 +127,5 @@ cargo install brightness-cli
 ### Nix
 
 ```sh
-nix profile install github:nik-rev/lumina/main
+nix profile install github:nik-rev/brightness-cli/main
 ```
