@@ -6,6 +6,27 @@ Supported:
 - Windows
 - Linux
 
+# Usage
+
+Increase brightness by 10%, e.g. from 70% to 80%:
+
+```sh
+brightness-cli set +10%
+```
+
+Decrease brightness by 10%:
+
+```sh
+brightness-cli set -10%
+```
+
+Set brightness to 40%, e.g. from 80% to 40%:
+
+```sh
+brightness-cli set 40%
+```
+
+
 # Command-Line Help for `brightness-cli`
 
 This document contains the help content for the `brightness-cli` command-line program.
