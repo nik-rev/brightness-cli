@@ -14,7 +14,7 @@ Increase brightness by 10%, e.g. from 70% to 80%:
 brightness-cli set +10%
 ```
 
-Decrease brightness by 10%:
+Decrease brightness by 10%, e.g. from 70% to 60%:
 
 ```sh
 brightness-cli set -10%
